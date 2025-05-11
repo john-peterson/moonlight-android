@@ -565,7 +565,7 @@ public class ComputerManagerService extends Service {
             // details.uuid can be null on initial PC add
             else if (details.uuid != null && !details.uuid.equals(newDetails.uuid)) {
                 // We got the wrong PC!
-                LimeLog.info("Polling returned the wrong PC!");
+                LimeLog.info(String.format("Polling returned the wrong PC! old=%s new=%s", details.uuid, newDetails.uuid));
                 return null;
             }
 

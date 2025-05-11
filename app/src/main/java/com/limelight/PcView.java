@@ -10,6 +10,7 @@ import com.limelight.computers.ComputerManagerListener;
 import com.limelight.computers.ComputerManagerService;
 import com.limelight.grid.PcGridAdapter;
 import com.limelight.grid.assets.DiskAssetLoader;
+import com.limelight.LimeLog;
 import com.limelight.nvstream.http.ComputerDetails;
 import com.limelight.nvstream.http.NvApp;
 import com.limelight.nvstream.http.NvHTTP;
@@ -301,6 +302,7 @@ public class PcView extends Activity implements AdapterFragmentCallbacks {
 
     @Override
     protected void onResume() {
+        LimeLog.info("pc view resumed ");
         super.onResume();
 
         // Display a decoder crash notification if we've returned after a crash
@@ -312,6 +314,7 @@ public class PcView extends Activity implements AdapterFragmentCallbacks {
 
     @Override
     protected void onPause() {
+        LimeLog.info("pc view paused ");
         super.onPause();
 
         inForeground = false;
@@ -402,6 +405,7 @@ public class PcView extends Activity implements AdapterFragmentCallbacks {
             return;
         }
 
+        LimeLog.info("pairing ");
         Toast.makeText(PcView.this, getResources().getString(R.string.pairing), Toast.LENGTH_SHORT).show();
         new Thread(new Runnable() {
             @Override
@@ -476,6 +480,7 @@ public class PcView extends Activity implements AdapterFragmentCallbacks {
 
                 final String toastMessage = message;
                 final boolean toastSuccess = success;
+        LimeLog.info(String.format("pair message=&s res=%d", toastMessage, toastSuccess));
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
